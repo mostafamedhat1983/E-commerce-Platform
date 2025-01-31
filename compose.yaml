@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  backend:
+    build: ./devops-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - db
+ 
+  frontend:
+    build: ./devops-frontend
+    ports:
+      - "5174:5174"
+    depends_on:
+      - backend
+    networks:
+      - frontend    
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw  # Root password
+      MYSQL_DATABASE: my_database        # Database name
+      MYSQL_USER: test                # Database user
+      MYSQL_PASSWORD: test        # Database user password
+    ports:
+      - "3306:3306"                      # Expose MySQL on port 3306
+    volumes:
+      - mysql_data:/var/lib/mysql        # Persist data
+    networks:
+       backend:
+         aliases:
+           - mysql
+volumes:
+  mysql_data:
+networks:
+  frontend:
+  backend:

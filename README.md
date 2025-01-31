@@ -2,7 +2,8 @@
 
 A full-featured e-commerce platform built with AI, React, TypeScript, and modern web technologies.
 
-![Uploading shop.png…]()
+<img width="1506" alt="shop" src="https://github.com/user-attachments/assets/f7a29e1f-5094-4d4d-bee6-ff1dff089a5a" />
+
 
 
 ## Features

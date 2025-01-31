@@ -1,8 +1,9 @@
-# TestShop - Modern E-commerce Platform
+# Modern E-commerce Platform with Docker Compose 🚀
 
 A full-featured e-commerce platform built with AI, React, TypeScript, and modern web technologies.
 
-![TestShop Screenshot](images/homepage.png)
+![Uploading shop.png…]()
+
 
 ## Features
 
@@ -25,7 +26,7 @@ A full-featured e-commerce platform built with AI, React, TypeScript, and modern
 - **State Management:** Zustand
 - **Routing:** React Router
 - **Icons:** Lucide React
-- **Database:** IndexedDB (via idb)
+- **Database:** MySQL 8.0
 - **Build Tool:** Vite
 
 # Docker Compose Configuration Explanation

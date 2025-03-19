@@ -2,11 +2,12 @@ version: '3.8'
 services:
   backend:
     build: ./devops-backend
-    environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw  # Root password
-      MYSQL_DATABASE: my_database        # Database name
-      MYSQL_USER: test                # Database user
-      MYSQL_PASSWORD: test        # Database user password
+     environment:
+      - MYSQL_HOST=mysql  # Important: Hostname is the service name
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=my_database
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
     ports:
       - "8080:8080"
     networks:

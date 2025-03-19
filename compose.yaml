@@ -3,7 +3,7 @@ services:
   backend:
     build: ./devops-backend
     environment:
-      - MYSQL_HOST=mysql  # Important: Hostname is the service name
+      - MYSQL_HOST=mysql  
       - MYSQL_PORT=3306
       - MYSQL_DATABASE=my_database
       - MYSQL_USER=test

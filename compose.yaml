@@ -25,7 +25,7 @@ services:
       - frontend    
   db:
     image: mysql:8.0
-    container_name: mysql_db
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw  # Root password
       MYSQL_DATABASE: my_database        # Database name

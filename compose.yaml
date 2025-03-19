@@ -38,8 +38,7 @@ services:
       - mysql_data:/var/lib/mysql        # Persist data
     networks:
        backend:
-         aliases:
-           - mysql
+         
 volumes:
   mysql_data:
 networks:

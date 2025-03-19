@@ -14,7 +14,7 @@ services:
       - frontend
       - backend
     depends_on:
-      - db
+      - mysql
  
   frontend:
     build: ./devops-frontend
@@ -24,7 +24,7 @@ services:
       - backend
     networks:
       - frontend    
-  db:
+  mysql:
     image: mysql:8.0
     container_name: mysql
     environment:

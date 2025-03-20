@@ -11,10 +11,10 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - frontend
-      - backend
+      - backend  # Backend should only be on the backend network
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
  
   frontend:
     build: ./devops-frontend
@@ -28,19 +28,25 @@ services:
     image: mysql:8.0
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw  # Root password
-      MYSQL_DATABASE: my_database        # Database name
-      MYSQL_USER: test                # Database user
-      MYSQL_PASSWORD: test        # Database user password
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
     ports:
-      - "3306:3306"                      # Expose MySQL on port 3306
+      - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql        # Persist data
+      - mysql_/var/lib/mysql
     networks:
-       backend:
-         
+      - backend # MySQL should only be on the backend network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pmy-secret-pw"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s # Add a start period to allow MySQL time to initialize
+
 volumes:
-  mysql_data:
+  mysql_
 networks:
   frontend:
   backend:

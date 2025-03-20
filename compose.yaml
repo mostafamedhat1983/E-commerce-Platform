@@ -11,7 +11,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - backend  # Backend should only be on the backend network
+      - backend
     depends_on:
       mysql:
         condition: service_healthy
@@ -35,18 +35,19 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql_/var/lib/mysql
+      - mysql_:/var/lib/mysql  # Corrected volume mount
     networks:
-      - backend # MySQL should only be on the backend network
+      - backend
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pmy-secret-pw"]
       interval: 10s
       timeout: 5s
       retries: 10
-      start_period: 30s # Add a start period to allow MySQL time to initialize
+      start_period: 30s
 
 volumes:
-  mysql_
+  mysql_: {}  # Corrected volume definition
+
 networks:
   frontend:
   backend:

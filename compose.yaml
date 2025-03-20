@@ -12,6 +12,7 @@ services:
       - "8080:8080"
     networks:
       - backend
+      - frontend
     depends_on:
       mysql:
         condition: service_healthy
